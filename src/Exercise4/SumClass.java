@@ -1,6 +1,6 @@
 package Exercise4;
 
-public class SumClass {
+class SumClass {
     private int sum = 0;
 
     public int getSumNotSynchronized() {
