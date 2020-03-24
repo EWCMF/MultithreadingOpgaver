@@ -22,10 +22,6 @@ public class Exercise1 extends Application {
         PrintChar printB = new PrintChar('b', 100);
         PrintNum print100 = new PrintNum(100);
 
-        printA.setPrintArea(textArea);
-        printB.setPrintArea(textArea);
-        print100.setPrintArea(textArea);
-
         // Create threads
         Thread thread1 = new Thread(printA);
         Thread thread2 = new Thread(printB);
@@ -50,7 +46,6 @@ public class Exercise1 extends Application {
 class PrintChar implements Runnable {
     private char charToPrint; // The character to print
     private int times; // The times to repeat
-    private TextArea printArea;
 
     /** Construct a task with specified character and number of
      *  times to print the character
@@ -68,16 +63,11 @@ class PrintChar implements Runnable {
             Platform.runLater(() -> Exercise1.updateTextArea("" + charToPrint));
         }
     }
-
-    public void setPrintArea(TextArea printArea) {
-        this.printArea = printArea;
-    }
 }
 
 // The task class for printing number from 1 to n for a given n
 class PrintNum implements Runnable {
     private int lastNum;
-    private TextArea printArea;
 
     /** Construct a task for printing 1, 2, ... i */
     public PrintNum(int n) {
@@ -90,9 +80,5 @@ class PrintNum implements Runnable {
             int finalI = i;
             Platform.runLater(() -> Exercise1.updateTextArea("" + finalI));
         }
-    }
-
-    public void setPrintArea(TextArea printArea) {
-        this.printArea = printArea;
     }
 }
