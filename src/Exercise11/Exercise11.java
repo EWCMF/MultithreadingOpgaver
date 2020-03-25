@@ -1,5 +1,7 @@
 package Exercise11;
 
+// Et eksempel på deadlock. To tråde skal lægge to tal sammen i modsat rækkefølge og derfor ender de i deadlock da der er lås på.
+// Kører man programmet vil den derfor aldrig afslutte.
 public class Exercise11 {
     public static void main(String[] args) {
         Integer firstNumber = 5;
@@ -20,6 +22,8 @@ public class Exercise11 {
                     }
 
                     System.out.println("Tråd 1 vil have låsen til secondNumber.");
+
+                    // Alt efter her når tråd 1 aldrig hen til.
                     synchronized (secondNumber) {
                         sum += secondNumber;
                         System.out.println("secondNumber er låst af tråd 1.");
@@ -45,6 +49,8 @@ public class Exercise11 {
                     }
 
                     System.out.println("Tråd 2 vil have låsen til firstNumber.");
+
+                    // Alt efter her når tråd 2 aldrig hen til.
                     synchronized (firstNumber) {
                         sum += firstNumber;
 

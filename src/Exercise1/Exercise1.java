@@ -12,6 +12,7 @@ public class Exercise1 extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         textArea = new TextArea();
+        // Uden denne laves der ikke linjeskift.
         textArea.setWrapText(true);
         Scene scene = new Scene(textArea, 300, 200);
         stage.setScene(scene);
@@ -37,11 +38,13 @@ public class Exercise1 extends Application {
         Application.launch(args);
     }
 
+    // Metode lavet til at opdater textArea. For at gøre det nemmere er både metoden og variablen statiske.
     public static void updateTextArea(String text) {
         textArea.appendText(text);
     }
 }
 
+// Taget fra Liang bogen.
 // The task for printing a specified character in specified times
 class PrintChar implements Runnable {
     private char charToPrint; // The character to print
@@ -60,11 +63,14 @@ class PrintChar implements Runnable {
      */
     public void run() {
         for (int i = 0; i < times; i++) {
+            // Platform.runLater er nødvendig da der kommer fejl uden.
+            // Kun tråden med JavaFX må opdaterer JavaFX ting og dette kan Platform klassen faciliterer.
             Platform.runLater(() -> Exercise1.updateTextArea("" + charToPrint));
         }
     }
 }
 
+// Taget fra Liang bogen.
 // The task class for printing number from 1 to n for a given n
 class PrintNum implements Runnable {
     private int lastNum;
