@@ -2,7 +2,7 @@ package Exercise11;
 
 // Et eksempel på deadlock. To tråde skal lægge to tal sammen i modsat rækkefølge og derfor ender de i deadlock da der er lås på.
 // Kører man programmet vil den derfor aldrig afslutte.
-public class Exercise11 {
+class Exercise11 {
     public static void main(String[] args) {
         Integer firstNumber = 5;
         Integer secondNumber = 10;
